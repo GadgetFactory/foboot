@@ -53,6 +53,11 @@ class Platform(LatticePlatform):
             LatticePlatform.__init__(self, "ice40-up5k-sg48", _io, _connectors, toolchain="icestorm")
             self.spi_size = 16 * 1024 * 1024
             self.spi_dummy = 6
+        elif revision == "jeannie_up":
+            from litex_boards.partner.platforms.fomu_jeannie_up import _io, _connectors
+            LatticePlatform.__init__(self, "ice40-up5k-sg48", _io, _connectors, toolchain="icestorm")
+            self.spi_size = 2 * 1024 * 1024
+            self.spi_dummy = 4
         elif revision == "dvt":
             from litex_boards.partner.platforms.fomu_pvt import _io, _connectors
             LatticePlatform.__init__(self, "ice40-up5k-uwg30", _io, _connectors, toolchain="icestorm")
@@ -65,7 +70,7 @@ class Platform(LatticePlatform):
             self.spi_dummy = 6
         elif revision == "hacker":
             from litex_boards.partner.platforms.fomu_hacker import _io, _connectors
-            LatticePlatform.__init__(self, "ice40-up5k-uwg30", _io, _connectors, toolchain="icestorm")
+            LatticePlatform.__init__(self, "ice40-up5k-sg48", _io, _connectors, toolchain="icestorm")
             self.spi_size = 2 * 1024 * 1024
             self.spi_dummy = 4
         else:
@@ -341,7 +346,7 @@ def main():
         help="Don't build gateware or software, only build documentation"
     )
     parser.add_argument(
-        "--revision", choices=["evt", "dvt", "pvt", "hacker"], required=True,
+        "--revision", choices=["jeannie_up", "evt", "dvt", "pvt", "hacker"], required=True,
         help="build foboot for a particular hardware revision"
     )
     parser.add_argument(

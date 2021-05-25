@@ -71,7 +71,7 @@ struct usb_string_descriptor_struct {
 #elif defined(CONFIG_FOMU_REV_HACKER)
 #define PRODUCT_NAME              u"Fomu Hacker running DFU Bootloader " GIT_VERSION
 #else
-#define PRODUCT_NAME              u"Fomu DFU Bootloader " GIT_VERSION
+#define PRODUCT_NAME              u"Jeannie DFU Bootloader " GIT_VERSION
 #endif
 #define PRODUCT_NAME_LEN          sizeof(PRODUCT_NAME)
 #define EP0_SIZE                  64

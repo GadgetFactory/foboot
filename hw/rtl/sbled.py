@@ -62,6 +62,12 @@ class SBLED(Module, AutoCSR):
                 If(self.ctrl.storage[4], rgba_pwm[2].eq(self.raw.storage[1])).Else(rgba_pwm[2].eq(ledd_value[1])),
                 If(self.ctrl.storage[5], rgba_pwm[0].eq(self.raw.storage[2])).Else(rgba_pwm[0].eq(ledd_value[2])),
             ]
+        elif revision == "jeannie_up":
+            self.comb += [
+                If(self.ctrl.storage[3], rgba_pwm[1].eq(self.raw.storage[0])).Else(rgba_pwm[1].eq(ledd_value[0])),
+                If(self.ctrl.storage[4], rgba_pwm[2].eq(self.raw.storage[1])).Else(rgba_pwm[2].eq(ledd_value[1])),
+                If(self.ctrl.storage[5], rgba_pwm[0].eq(self.raw.storage[2])).Else(rgba_pwm[0].eq(ledd_value[2])),
+            ]
         elif revision == "hacker":
             self.comb += [
                 If(self.ctrl.storage[3], rgba_pwm[2].eq(self.raw.storage[0])).Else(rgba_pwm[2].eq(ledd_value[0])),
