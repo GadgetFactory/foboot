@@ -67,6 +67,11 @@ class Platform(LatticePlatform):
             LatticePlatform.__init__(self, "ice40-up5k-uwg30", _io, _connectors, toolchain="icestorm")
             self.spi_size = 2 * 1024 * 1024
             self.spi_dummy = 4
+        elif revision == "jeannie":
+            from litex_boards.platforms.gadgetfactory_jeannie import _io, _connectors
+            LatticePlatform.__init__(self, "ice40-up5k-sg48", _io, _connectors, toolchain="icestorm")
+            self.spi_size = 16 * 1024 * 1024
+            self.spi_dummy = 4
         else:
             raise ValueError("Unrecognized revision: {}.  Known values: evt, dvt, pvt, hacker".format(revision))
 
@@ -455,7 +460,7 @@ def main():
         help="Don't build gateware or software, only build documentation"
     )
     parser.add_argument(
-        "--revision", choices=["evt", "dvt", "pvt", "hacker"], required=True,
+        "--revision", choices=["evt", "dvt", "pvt", "hacker", "jeannie"], required=True,
         help="build foboot for a particular hardware revision"
     )
     parser.add_argument(
